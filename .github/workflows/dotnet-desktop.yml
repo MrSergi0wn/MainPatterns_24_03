@@ -16,11 +16,11 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Install dependencies
-      working-directory: ./Src/
+      working-directory: ./MainPatterns_24_03/
       run: dotnet restore
     - name: Build
-      working-directory: ./Src/
+      working-directory: ./MainPatterns_24_03/
       run: dotnet build
     - name: Test
-      working-directory: ./Src/
+      working-directory: ./MainPatterns_24_03/
       run: dotnet test
