@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  test:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v4
@@ -16,7 +16,7 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Install dependencies
-      run: dotnet add package xunit --version 2.5.3
+      run: dotnet restore
     - name: Build
       run: dotnet build
     - name: Test
