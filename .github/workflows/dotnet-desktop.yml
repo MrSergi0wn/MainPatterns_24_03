@@ -1,4 +1,4 @@
-name: .NET
+name: PatternsCI
 
 on:
   pull_request:
