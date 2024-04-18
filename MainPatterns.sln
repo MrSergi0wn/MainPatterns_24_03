@@ -1,13 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.33801.447
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "QuadraticEquation", "QuadraticEquation", "{75C55EA7-A58D-4F04-9ECD-66BE41E797F7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MainPatterns.QuadraticEquation", "Src\QuadraticEquation\MainPatterns.QuadraticEquation.csproj", "{BD994607-FFC3-4F6D-8657-F5AF6A8B4932}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MainPatterns.QuadraticEquation.UnitTests", "Src\QuadraticEquation.UnitTests\MainPatterns.QuadraticEquation.UnitTests.csproj", "{50CE6BAF-8B6F-417F-938E-446398DC3278}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SpaceBattle", "SpaceBattle", "{F26C75A4-E25D-491F-ACE5-D0D5A6CADD91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainPatterns.SpaceBattle", "Src\MainPatterns.SpaceBattle\MainPatterns.SpaceBattle.csproj", "{CE779CE7-06EF-4F53-BAF4-D613030D690E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainPatterns.SpaceBattle.UnitTests", "Src\MainPatterns.SpaceBattle.UnitTests\MainPatterns.SpaceBattle.UnitTests.csproj", "{04F34FCE-9EF9-4341-B32F-84BE14D0A66E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +29,14 @@ Global
 		{50CE6BAF-8B6F-417F-938E-446398DC3278}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50CE6BAF-8B6F-417F-938E-446398DC3278}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50CE6BAF-8B6F-417F-938E-446398DC3278}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE779CE7-06EF-4F53-BAF4-D613030D690E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE779CE7-06EF-4F53-BAF4-D613030D690E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE779CE7-06EF-4F53-BAF4-D613030D690E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE779CE7-06EF-4F53-BAF4-D613030D690E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04F34FCE-9EF9-4341-B32F-84BE14D0A66E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04F34FCE-9EF9-4341-B32F-84BE14D0A66E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04F34FCE-9EF9-4341-B32F-84BE14D0A66E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04F34FCE-9EF9-4341-B32F-84BE14D0A66E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,6 +44,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{BD994607-FFC3-4F6D-8657-F5AF6A8B4932} = {75C55EA7-A58D-4F04-9ECD-66BE41E797F7}
 		{50CE6BAF-8B6F-417F-938E-446398DC3278} = {75C55EA7-A58D-4F04-9ECD-66BE41E797F7}
+		{CE779CE7-06EF-4F53-BAF4-D613030D690E} = {F26C75A4-E25D-491F-ACE5-D0D5A6CADD91}
+		{04F34FCE-9EF9-4341-B32F-84BE14D0A66E} = {F26C75A4-E25D-491F-ACE5-D0D5A6CADD91}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EAF59454-EA82-48BB-A24C-849495E6614C}
