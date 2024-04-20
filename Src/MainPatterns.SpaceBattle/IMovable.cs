@@ -4,9 +4,9 @@ namespace MainPatterns.SpaceBattle
 {
     public interface IMovable
     {
-        Vector GetPosition();
-
         void SetPosition(Vector position);
+
+        Vector GetPosition();       
 
         Vector GetVelocity();
     }

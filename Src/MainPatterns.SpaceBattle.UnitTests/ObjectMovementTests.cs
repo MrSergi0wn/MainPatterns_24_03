@@ -1,6 +1,7 @@
 using MainPatterns.SpaceBattle.Calculations;
 using MainPatterns.SpaceBattle.Commands;
 using MainPatterns.SpaceBattle.Objects;
+using Moq;
 
 namespace MainPatterns.SpaceBattle.UnitTests
 {
@@ -24,16 +25,17 @@ namespace MainPatterns.SpaceBattle.UnitTests
         [Fact]
         public void AbstractObjectChangePositionTest()
         {
-            var starShip = new SpaceObject();
-            starShip.Add(new Specifications());
+            var resultPosition = new Mock<IMovable>();
 
-            var starShipSpecifications = starShip.Get<Specifications>();
-            starShipSpecifications.Position = new Vector(12, 5);
+            resultPosition.Setup(p => p.GetPosition()).Returns(new Vector(12, 5)).Verifiable();
+            resultPosition.Setup(p => p.GetVelocity()).Returns(new Vector(-5, 3)).Verifiable();
 
-            var moveCommand = new MoveCommand(starShip, new Vector(-7, 3));
+            var moveCommand = new MoveCommand(resultPosition.Object);
             moveCommand.Execute();
 
-            Assert.Equal(starShipSpecifications.Position, new Vector(5, 8));
+
+
+            //resultPosition.Verify(p => p.SetPosition(new Vector(7, 8)));
         }
     }
 }

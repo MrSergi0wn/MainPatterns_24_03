@@ -4,6 +4,8 @@
     {
         private int[] vector;
 
+        public Vector() { }
+
         public Vector(int[] vector)
         {
             this.vector = vector;
