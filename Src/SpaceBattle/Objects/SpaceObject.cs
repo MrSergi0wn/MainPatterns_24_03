@@ -1,6 +1,9 @@
-﻿namespace MainPatterns.SpaceBattle.Objects
+﻿using MainPatterns.SpaceBattle.Interfaces;
+using System.ComponentModel;
+
+namespace MainPatterns.SpaceBattle.Objects
 {
-    public class SpaceObject : ISpaceObject
+    public class SpaceObject
     {
         private List<IObject> Objects { get; }
 
@@ -16,7 +19,7 @@
 
         public T Get<T>() where T : IObject
         {
-            return (T)Objects.Find(obj => obj.GetType() == typeof(T))!;
+            return (T)Objects.FirstOrDefault(obj => obj.GetType() == typeof(T))!;
         }
     }
 }

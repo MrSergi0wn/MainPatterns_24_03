@@ -11,11 +11,15 @@ namespace MainPatterns.SpaceBattle.Commands
 
         //private Specifications specifications;
 
-        public IMovable movable;
+        public readonly SpaceObject spaceObject;
 
-        public MoveCommand(IMovable movable)
+        private readonly Specifications specifications;
+
+        public MoveCommand(SpaceObject spaceObject)
         {
-            this.movable = movable;
+            this.spaceObject = spaceObject;
+            this.specifications = this.spaceObject.Get<Specifications>();
+
 
             //this.SpaceObject = spaceObject;
             //this.Direction = direction;
@@ -24,7 +28,14 @@ namespace MainPatterns.SpaceBattle.Commands
 
         public void Execute()
         {
-            movable.SetPosition(new Vector().Sum(movable.GetPosition(), movable.GetVelocity()));
+            try
+            {
+                this.specifications.Position += this.specifications.Velocity;   
+            }
+            catch
+            {
+                throw new NullReferenceException();
+            }
         }
     }
 }

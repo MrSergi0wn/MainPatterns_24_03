@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MainPatterns.SpaceBattle\MainPatterns.SpaceBattle.csproj" />
+    <ProjectReference Include="..\SpaceBattle\MainPatterns.SpaceBattle.csproj" />
   </ItemGroup>
 
   <ItemGroup>
