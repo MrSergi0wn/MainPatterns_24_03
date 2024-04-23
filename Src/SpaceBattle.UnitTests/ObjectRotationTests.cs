@@ -8,7 +8,7 @@ namespace MainPatterns.SpaceBattle.UnitTests
     public class ObjectRotationTests
     {
         /// <summary>
-        /// Для объекта, у которого параметр поворот (12, 5), движение меняет угол объекта на (5, 8)
+        /// Для объекта, у которого параметр поворот (12, 5), движение меняет угол объекта на (5, 8) 
         /// </summary>
         [Fact]
         public void ObjectChangeRotationTest()

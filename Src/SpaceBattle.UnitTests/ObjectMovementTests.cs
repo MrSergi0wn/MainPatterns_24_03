@@ -8,7 +8,7 @@ namespace MainPatterns.SpaceBattle.UnitTests
     public class ObjectMovementTests
     {
         /// <summary>
-        /// Для объекта, находящегося в точке (12, 5) и движущегося со скоростью (-7, 3) движение меняет положение объекта на (5, 8)
+        /// Для объекта, находящегося в точке (12, 5) и движущегося со скоростью (-7, 3) движение меняет положение объекта на (5, 8) 
         /// </summary>
         [Fact]
         public void ObjectChangePositionTest()
