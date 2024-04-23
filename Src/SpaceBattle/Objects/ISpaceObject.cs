@@ -6,5 +6,5 @@ public interface ISpaceObject : IObject
 {
     void Add(IObject obj);
 
-    T Get<T>() where T : IObject;
+    T GetComponent<T>() where T : IObject;
 }

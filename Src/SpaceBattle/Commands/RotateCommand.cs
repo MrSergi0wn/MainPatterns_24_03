@@ -4,18 +4,18 @@ using MainPatterns.SpaceBattle.Objects;
 
 namespace MainPatterns.SpaceBattle.Commands
 {
-    public class MoveCommand
+    public class RotateCommand
     {
         private readonly Parameters specifications;
 
         public readonly SpaceObject spaceObject;
 
-        public readonly Vector velocity;
+        public readonly Vector rotationAngle;
 
-        public MoveCommand(SpaceObject spaceObject, Vector velocity)
+        public RotateCommand(SpaceObject spaceObject, Vector rotationAngle)
         {
             this.spaceObject = spaceObject;
-            this.velocity = velocity;
+            this.rotationAngle = rotationAngle;
             this.specifications = this.spaceObject.Get<Parameters>();
         }
 
@@ -23,7 +23,7 @@ namespace MainPatterns.SpaceBattle.Commands
         {
             try
             {
-                this.specifications.Position += this.velocity;
+                this.specifications.Rotation += this.rotationAngle;
             }
             catch
             {
