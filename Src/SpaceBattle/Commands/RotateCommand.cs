@@ -4,7 +4,7 @@ using MainPatterns.SpaceBattle.Objects;
 
 namespace MainPatterns.SpaceBattle.Commands
 {
-    public class RotateCommand
+    public class RotateCommand : ICommand
     {
         private readonly Parameters specifications;
 
