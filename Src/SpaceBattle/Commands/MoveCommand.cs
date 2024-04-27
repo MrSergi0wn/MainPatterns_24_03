@@ -4,7 +4,7 @@ using MainPatterns.SpaceBattle.Objects;
 
 namespace MainPatterns.SpaceBattle.Commands
 {
-    public class MoveCommand
+    public class MoveCommand : ICommand
     {
         private readonly Parameters specifications;
 
