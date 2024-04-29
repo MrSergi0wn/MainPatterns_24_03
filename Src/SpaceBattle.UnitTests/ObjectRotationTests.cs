@@ -16,7 +16,7 @@ namespace MainPatterns.SpaceBattle.UnitTests
             var starShip = new SpaceObject();
             starShip.Add(new Parameters());
 
-            var starShipSpecifications = starShip.Get<Parameters>();
+            var starShipSpecifications = starShip.GetComponent<Parameters>();
             starShipSpecifications.Rotation = new Vector(new double[] { 12, 5 });
 
             new RotateCommand(starShip, new Vector(new double[] { 5, 8 })).Execute();
@@ -43,7 +43,7 @@ namespace MainPatterns.SpaceBattle.UnitTests
             var starShip = new SpaceObject();
             starShip.Add(new Parameters());
 
-            var starShipSpecifications = starShip.Get<Parameters>();
+            var starShipSpecifications = starShip.GetComponent<Parameters>();
 
             Assert.Throws<Exception>(() => starShipSpecifications.Rotation = new Vector(new double[] { double.NaN, 5 }));
         }

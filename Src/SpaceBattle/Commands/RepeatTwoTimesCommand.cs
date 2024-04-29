@@ -16,5 +16,10 @@
         {
             for (var i = 0; i < this.timesToRepeat; i++) this.command.Execute();
         }
+
+        public void Undo()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

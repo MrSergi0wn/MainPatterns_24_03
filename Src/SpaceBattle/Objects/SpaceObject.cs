@@ -1,9 +1,9 @@
-﻿using MainPatterns.SpaceBattle.Interfaces;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using MainPatterns.SpaceBattle.Actions;
 
 namespace MainPatterns.SpaceBattle.Objects
 {
-    public class SpaceObject
+    public class SpaceObject : IObject
     {
         private List<IObject> Objects { get; }
 
@@ -17,7 +17,7 @@ namespace MainPatterns.SpaceBattle.Objects
             this.Objects.Add(obj);
         }
 
-        public T Get<T>() where T : IObject
+        public T GetComponent<T>() where T : IObject
         {
             return (T)Objects.FirstOrDefault(obj => obj.GetType() == typeof(T))!;
         }

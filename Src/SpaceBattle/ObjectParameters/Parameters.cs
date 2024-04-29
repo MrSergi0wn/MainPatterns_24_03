@@ -1,5 +1,5 @@
-﻿using MainPatterns.SpaceBattle.Calculations;
-using MainPatterns.SpaceBattle.Interfaces;
+﻿using MainPatterns.SpaceBattle.Actions;
+using MainPatterns.SpaceBattle.Calculations;
 
 namespace MainPatterns.SpaceBattle.ObjectParameters
 {

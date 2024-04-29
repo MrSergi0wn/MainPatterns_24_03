@@ -33,6 +33,22 @@
             }
         }
 
+        public static Vector operator -(Vector? firstVector, Vector? secondVector)
+        {
+            try
+            {
+                var newVector = new double[firstVector!.vector.Length];
+
+                for (var i = 0; i < newVector.Length; i++) newVector[i] = firstVector.vector[i] - secondVector!.vector[i];
+
+                return new Vector(newVector);
+            }
+            catch
+            {
+                throw new Exception();
+            }
+        }
+
         public bool Equals(Vector? firstVector, Vector? secondVector)
         {
             var firstVectorLength = firstVector!.vector.Length;

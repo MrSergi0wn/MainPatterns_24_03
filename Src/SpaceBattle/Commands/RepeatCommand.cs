@@ -13,5 +13,10 @@
         {
             this.command.Execute();
         }
+
+        public void Undo()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

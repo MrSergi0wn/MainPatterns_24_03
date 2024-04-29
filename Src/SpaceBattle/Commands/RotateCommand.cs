@@ -16,7 +16,7 @@ namespace MainPatterns.SpaceBattle.Commands
         {
             this.spaceObject = spaceObject;
             this.rotationAngle = rotationAngle;
-            this.specifications = this.spaceObject.Get<Parameters>();
+            this.specifications = this.spaceObject.GetComponent<Parameters>();
         }
 
         public void Execute()
@@ -29,6 +29,11 @@ namespace MainPatterns.SpaceBattle.Commands
             {
                 throw new Exception();
             }
+        }
+
+        public void Undo()
+        {
+            this.specifications.Rotation -= this.rotationAngle;
         }
     }
 }

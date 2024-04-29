@@ -19,6 +19,11 @@
             this.Log = $"{DateTime.Now} При выполнении команды: {command.GetType()} возникла ошибка: {exception.Message}";
         }
 
+        public void Undo()
+        {
+            throw new NotImplementedException();
+        }
+
         public string? GetLog()
         {
             return this.Log;
