@@ -47,3 +47,4 @@ namespace MainPatterns.SpaceBattle.UnitTests
         }
     }
 }
+
