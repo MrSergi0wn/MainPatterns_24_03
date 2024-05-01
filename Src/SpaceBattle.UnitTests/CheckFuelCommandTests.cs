@@ -12,6 +12,5 @@ namespace MainPatterns.SpaceBattle.UnitTests
             Assert.Throws<CommandException>(() => new CheckFuelCommand(new Fuel(0, 2)).Execute());
         }
 
-        //todo Придумать еще тесты
     }
 }
