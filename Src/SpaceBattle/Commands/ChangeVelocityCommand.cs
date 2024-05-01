@@ -49,3 +49,4 @@ namespace MainPatterns.SpaceBattle.Commands
         }
     }
 }
+

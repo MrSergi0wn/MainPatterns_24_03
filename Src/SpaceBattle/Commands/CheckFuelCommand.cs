@@ -20,3 +20,4 @@ namespace MainPatterns.SpaceBattle.Commands
         public void Undo() {}
     }
 }
+
