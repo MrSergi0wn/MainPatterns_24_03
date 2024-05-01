@@ -1,6 +1,6 @@
 ﻿using MainPatterns.SpaceBattle.Calculations;
 
-namespace MainPatterns.SpaceBattle.Interfaces
+namespace MainPatterns.SpaceBattle.Actions
 {
     public interface IMovable
     {
