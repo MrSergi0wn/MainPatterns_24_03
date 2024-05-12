@@ -44,7 +44,7 @@ namespace MainPatterns.SpaceBattle.UnitTests
             var velocity = new Vector(0, 1);
             var moveCommand = this.ioc.Resolve<ICommand>("Move", spaceObject, velocity);
 
-            Assert.Equal(moveCommand.GetType(), typeof(MoveCommand));
+            Assert.True(typeof(MoveCommand) == moveCommand.GetType());
             Assert.Equal(((MoveCommand)moveCommand).spaceObject, spaceObject);
             Assert.Equal(((MoveCommand)moveCommand).velocity, velocity);
         }
@@ -58,7 +58,7 @@ namespace MainPatterns.SpaceBattle.UnitTests
         [Fact]
         public void BindWithNullKeyExceptionTest()
         {   
-            Assert.Throws<Exception>(() => this.ioc.Bind("Move", null));
+            Assert.Throws<Exception>(() => this.ioc.Bind("Move", null!));
         }
 
         [Fact]
