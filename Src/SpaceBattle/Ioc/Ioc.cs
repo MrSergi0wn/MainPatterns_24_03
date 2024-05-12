@@ -16,6 +16,6 @@ namespace MainPatterns.SpaceBattle.Ioc
 
         public void UnBind(string key) => this.container.Unbind(key);
 
-        public bool IsAlreadyBind(string key) => this.container.IsAlreadyBind(key);
+        public bool IsAlreadyBind(string key) => this.container.IsAlreadyBind(key); 
     }
 }

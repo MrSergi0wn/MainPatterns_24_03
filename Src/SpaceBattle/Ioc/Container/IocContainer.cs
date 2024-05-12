@@ -54,10 +54,7 @@ namespace MainPatterns.SpaceBattle.Ioc.Container
 
         public bool IsAlreadyBind(string key)
         {
-            if (this.container == null) return false;
-            return this.container.ContainsKey((this.currentScope, key));
-
-            //return this.container != null && container.ContainsKey((this.currentScope, key));
+            return this.container != null && container.ContainsKey((this.currentScope, key));
         }
     }
 }
