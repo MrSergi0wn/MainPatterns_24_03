@@ -9,5 +9,5 @@ public interface IIoc
     T Resolve<T>(string key, params object[] args);
     void Bind(string key, Func<object[], object> strategy);
     void UnBind(string key);
-    bool IsAlreadyBind(string key);
+    bool IsAlreadyBind(string key); 
 }
