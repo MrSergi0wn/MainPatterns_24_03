@@ -1,8 +1,8 @@
-﻿using MainPatterns.SpaceBattle.Commands.Simple;
-using MainPatterns.SpaceBattle.Exceptions;
-using MainPatterns.SpaceBattle.Objects;
+﻿using SpaceBattle.Commands.Simple;
+using SpaceBattle.Components.Objects;
+using SpaceBattle.Exceptions;
 
-namespace MainPatterns.SpaceBattle.UnitTests.CommandsTests
+namespace SpaceBattle.UnitTests.CommandsTests
 {
     public class CheckFuelCommandTests
     {

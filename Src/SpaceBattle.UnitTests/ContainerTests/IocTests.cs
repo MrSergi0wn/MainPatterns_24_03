@@ -1,11 +1,10 @@
-﻿using MainPatterns.SpaceBattle.Calculations;
-using MainPatterns.SpaceBattle.Commands;
-using MainPatterns.SpaceBattle.Commands.Simple;
-using MainPatterns.SpaceBattle.Ioc;
-using MainPatterns.SpaceBattle.Ioc.Container;
-using MainPatterns.SpaceBattle.Objects;
+﻿using SpaceBattle.Commands;
+using SpaceBattle.Commands.Simple;
+using SpaceBattle.Components.Calculations;
+using SpaceBattle.Components.Objects;
+using SpaceBattle.Ioc;
 
-namespace MainPatterns.SpaceBattle.UnitTests.ContainerTests
+namespace SpaceBattle.UnitTests.ContainerTests
 {
     public class IocTests
     {

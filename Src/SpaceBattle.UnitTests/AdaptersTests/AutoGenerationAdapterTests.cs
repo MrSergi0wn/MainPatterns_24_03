@@ -1,6 +1,4 @@
-﻿using MainPatterns.SpaceBattle.Actions;
-
-namespace MainPatterns.SpaceBattle.UnitTests.AdaptersTests
+﻿namespace SpaceBattle.UnitTests.AdaptersTests
 {
     public class AutoGenerationAdapterTests
     {

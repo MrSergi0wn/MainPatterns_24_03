@@ -1,7 +1,7 @@
-﻿using MainPatterns.SpaceBattle.Commands;
-using MainPatterns.SpaceBattle.Commands.Simple;
+﻿using SpaceBattle.Commands;
+using SpaceBattle.Commands.Simple;
 
-namespace MainPatterns.SpaceBattle.UnitTests.CommandsTests
+namespace SpaceBattle.UnitTests.CommandsTests
 {
     public class LogExceptionCommandTests
     {

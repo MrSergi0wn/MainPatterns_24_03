@@ -1,12 +1,12 @@
-﻿using MainPatterns.SpaceBattle.Calculations;
-using MainPatterns.SpaceBattle.Commands;
-using MainPatterns.SpaceBattle.Commands.Simple;
-using MainPatterns.SpaceBattle.Commands.Сomposite;
-using MainPatterns.SpaceBattle.Exceptions;
-using MainPatterns.SpaceBattle.ObjectParameters;
-using MainPatterns.SpaceBattle.Objects;
+﻿using SpaceBattle.Commands;
+using SpaceBattle.Commands.Simple;
+using SpaceBattle.Commands.Сomposite;
+using SpaceBattle.Components.Calculations;
+using SpaceBattle.Components.Objects;
+using SpaceBattle.Exceptions;
+using SpaceBattle.ObjectParameters;
 
-namespace MainPatterns.SpaceBattle.UnitTests.CommandsTests
+namespace SpaceBattle.UnitTests.CommandsTests
 {
     public class MacroCommandTests
     {

@@ -1,10 +1,9 @@
-﻿using MainPatterns.SpaceBattle.Calculations;
-using MainPatterns.SpaceBattle.Commands;
-using MainPatterns.SpaceBattle.Commands.Simple;
-using MainPatterns.SpaceBattle.ObjectParameters;
-using MainPatterns.SpaceBattle.Objects;
+﻿using SpaceBattle.Commands.Simple;
+using SpaceBattle.Components.Calculations;
+using SpaceBattle.Components.Objects;
+using SpaceBattle.ObjectParameters;
 
-namespace MainPatterns.SpaceBattle.UnitTests.ActionsTests
+namespace SpaceBattle.UnitTests.ActionsTests
 {
     public class ObjectRotationTests
     {

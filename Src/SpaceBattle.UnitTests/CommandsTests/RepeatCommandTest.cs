@@ -1,8 +1,8 @@
-﻿using MainPatterns.SpaceBattle.Commands;
-using MainPatterns.SpaceBattle.Commands.Simple;
-using MainPatterns.SpaceBattle.Runner;
+﻿using SpaceBattle.Commands;
+using SpaceBattle.Commands.Simple;
+using SpaceBattle.Runner;
 
-namespace MainPatterns.SpaceBattle.UnitTests.CommandsTests
+namespace SpaceBattle.UnitTests.CommandsTests
 {
     public class RepeatCommandTest
     {

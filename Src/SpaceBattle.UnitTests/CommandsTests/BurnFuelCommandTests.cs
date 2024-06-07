@@ -1,8 +1,7 @@
-﻿using MainPatterns.SpaceBattle.Commands;
-using MainPatterns.SpaceBattle.Commands.Simple;
-using MainPatterns.SpaceBattle.Objects;
+﻿using SpaceBattle.Commands.Simple;
+using SpaceBattle.Components.Objects;
 
-namespace MainPatterns.SpaceBattle.UnitTests.CommandsTests
+namespace SpaceBattle.UnitTests.CommandsTests
 {
     public class BurnFuelCommandTests
     {
