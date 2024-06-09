@@ -26,11 +26,11 @@ namespace SpaceBattle.Ioc.Container
             }
         }
 
-        public T Resolve<T>(string key, params object[] args)
+        public T Resolve<T>(string? key, params object[] args)
         {
             if (this.container != null)
             {
-                this.container.TryGetValue((this.currentScope, key), out var strategy);
+                this.container.TryGetValue((this.currentScope, key)!, out var strategy);
 
                 return (T)strategy?.Invoke(args)!;
             }

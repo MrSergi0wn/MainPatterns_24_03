@@ -27,7 +27,7 @@ namespace SpaceBattle.Commands.Simple
 
             var gameObject = ioc.Resolve<IMovable>(message.GameObjectId);
 
-            var velocity = float.Parse(message.ArgsJson);
+            var velocity = float.Parse(message.ArgsJson!);
 
             var command = ioc.Resolve<ICommand>(message.GameOperationId, gameObject, new Vector(new double[]{velocity}));
 
