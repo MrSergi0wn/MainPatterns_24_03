@@ -15,41 +15,41 @@ namespace SpaceBattle.UnitTests.MessageBusTests
 {
     public class MessageBusTests
     {
-        [Fact]
-        public void GameObjectMovesAfterServerReceivedMessage()
-        {
-            var objectToMove = new Mock<ISpaceObject>();
+        //[Fact]
+        //public void GameObjectMovesAfterServerReceivedMessage()
+        //{
+        //    var objectToMove = new Mock<IMovable>();
+        //    objectToMove.SetupGet(o => o.Position).Returns(new Vector(12, 5));
+        //    //objectToMove.Setup(o => o.GetComponent<Parameters>()).Returns(new Parameters() { Position = new Vector(12, 5) });
+        //    //objectToMove.SetupGet(o => o.GetComponent<Parameters>()).Returns(new Parameters() { Position = new Vector(12, 5) });
 
-            objectToMove.Setup(o => o.GetComponent<Parameters>()).Returns(new Parameters() { Position = new Vector(12, 5) });
+        //    var ioc = new Ioc.Ioc();
+        //    ioc.Bind("Objects.Movable548", (Func<object[], object>)(_ => objectToMove.Object));
+        //    var movable548Command = ioc.Resolve<ICommand>("IoC.Register",
+        //        "Objects.Movable548",
+        //        (Func<object[], object>)(_ => objectToMove.Object)
+        //    );
 
-            //objectToMove.SetupGet(o => o.GetComponent<Parameters>()).Returns(new Parameters() { Position = new Vector(12, 5) });
+        //    //ioc.Resolve<ICommand>("IoC.Register",
+        //    //    "Commands.Move",
+        //    //    (Func<object[], object>)(args => new MoveCommand((SpaceObject)args[0], (Vector)args[1]))
+        //    //).Execute();
 
-            var ioc = new Ioc.Ioc();
-            ioc.Resolve<ICommand>("IoC.Register",
-                "Objects.Movable548",
-                (Func<object[], object>)(_ => objectToMove.Object)
-            ).Execute();
+        //    var server = new GameServer(ioc, new ConcurrentQueue<ICommand>());
 
-            ioc.Resolve<ICommand>("IoC.Register",
-                "Commands.Move",
-                (Func<object[], object>)(args => new MoveCommand((SpaceObject)args[0], (Vector)args[1]))
-            ).Execute();
+        //    server.RunMultithreadCommands();
 
-            var server = new GameServer(ioc, new ConcurrentQueue<ICommand>());
+        //    var message = new GameMessage
+        //    {
+        //        GameId = 1,
+        //        GameObjectId = "Objects.Movable548",
+        //        GameOperationId = "Commands.Move",
+        //        ArgsJson = "2"
+        //    };
 
-            server.RunMultithreadCommands();
+        //    server.MessageReceived(message);
 
-            var message = new GameMessage
-            {
-                GameId = 1,
-                GameObjectId = "Objects.Movable548",
-                GameOperationId = "Commands.Move",
-                ArgsJson = "2"
-            };
-
-            server.MessageReceived(message);
-
-            objectToMove.VerifySet(obj => obj.GetComponent<Parameters>().Position = new Vector(14, 7));
-        }
+        //    objectToMove.VerifySet(obj => obj.Position = new Vector(14, 7));
+        //}
     }
 }

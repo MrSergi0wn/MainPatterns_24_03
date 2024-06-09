@@ -10,7 +10,7 @@ namespace SpaceBattle.Ioc
 
         public void SetScope(string scope) => this.container.SetScope(scope);
 
-        public T Resolve<T>(string key, params object[] args) => this.container.Resolve<T>(key, args);
+        public T Resolve<T>(string? key, params object[] args) => this.container.Resolve<T>(key, args);
 
         public void Bind(string key, Func<object[], object> strategy) => this.container.Bind(key, strategy);
 
