@@ -1,6 +1,6 @@
-﻿using MainPatterns.SpaceBattle.Commands;
+﻿using SpaceBattle.Commands;
 
-namespace MainPatterns.SpaceBattle.Handlers
+namespace SpaceBattle.Handlers
 {
     public class ExceptionHandler : IExceptionHandler
     {

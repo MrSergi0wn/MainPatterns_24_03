@@ -1,6 +1,6 @@
-﻿using MainPatterns.SpaceBattle.Ioc.Container;
+﻿using SpaceBattle.Ioc.Container;
 
-namespace MainPatterns.SpaceBattle.Ioc
+namespace SpaceBattle.Ioc
 {
     public class Ioc : IIoc
     {

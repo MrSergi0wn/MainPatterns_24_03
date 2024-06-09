@@ -1,7 +1,9 @@
-﻿using MainPatterns.SpaceBattle.Commands;
-using MainPatterns.SpaceBattle.Runner;
+﻿using SpaceBattle.Commands;
+using SpaceBattle.Commands.Simple;
+using SpaceBattle.Commands.Сomposite;
+using SpaceBattle.Runner;
 
-namespace MainPatterns.SpaceBattle.Handlers
+namespace SpaceBattle.Handlers
 {
     public class RepeatCommandTwoTimesAndLogHandler : IExceptionHandler
     {

@@ -1,4 +1,4 @@
-﻿namespace MainPatterns.SpaceBattle.Ioc.Container;
+﻿namespace SpaceBattle.Ioc.Container;
 
 public interface IIocContainer
 {

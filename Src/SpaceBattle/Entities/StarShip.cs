@@ -1,6 +1,6 @@
-﻿using MainPatterns.SpaceBattle.Actions;
+﻿using SpaceBattle.Components.Actions;
 
-namespace MainPatterns.SpaceBattle.Entities
+namespace SpaceBattle.Entities
 {
     public class StarShip : IObject
     {

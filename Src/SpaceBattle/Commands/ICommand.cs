@@ -1,4 +1,4 @@
-﻿namespace MainPatterns.SpaceBattle.Commands
+﻿namespace SpaceBattle.Commands
 {
     public interface ICommand
     {

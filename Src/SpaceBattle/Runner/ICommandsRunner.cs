@@ -1,6 +1,6 @@
-﻿using MainPatterns.SpaceBattle.Commands;
+﻿using SpaceBattle.Commands;
 
-namespace MainPatterns.SpaceBattle.Runner;
+namespace SpaceBattle.Runner;
 
 public interface ICommandsRunner
 {

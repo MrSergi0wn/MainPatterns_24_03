@@ -1,6 +1,6 @@
-﻿using MainPatterns.SpaceBattle.Commands;
+﻿using SpaceBattle.Commands;
 
-namespace MainPatterns.SpaceBattle.Exceptions
+namespace SpaceBattle.Exceptions
 {
     public class CommandException : Exception
     {

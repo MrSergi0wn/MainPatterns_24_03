@@ -1,7 +1,7 @@
-﻿using MainPatterns.SpaceBattle.Commands;
-using MainPatterns.SpaceBattle.Handlers;
+﻿using SpaceBattle.Commands;
+using SpaceBattle.Handlers;
 
-namespace MainPatterns.SpaceBattle.Runner
+namespace SpaceBattle.Runner
 {
     public class CommandsRunner : ICommandsRunner
     {

@@ -1,6 +1,6 @@
 ﻿using static System.String;
 
-namespace MainPatterns.SpaceBattle.Ioc.Container
+namespace SpaceBattle.Ioc.Container
 {
     public class IocContainer : IIocContainer
     {

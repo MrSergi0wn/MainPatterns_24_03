@@ -1,7 +1,7 @@
-﻿using MainPatterns.SpaceBattle.Actions;
-using MainPatterns.SpaceBattle.Calculations;
+﻿using SpaceBattle.Components.Actions;
+using SpaceBattle.Components.Calculations;
 
-namespace MainPatterns.SpaceBattle.ObjectParameters
+namespace SpaceBattle.ObjectParameters
 {
     public class Parameters : IObject, IMovable, IRotatable
     {
