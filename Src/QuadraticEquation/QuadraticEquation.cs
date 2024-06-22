@@ -1,4 +1,4 @@
-﻿namespace MainPatterns.QuadraticEquation;
+namespace MainPatterns.QuadraticEquation;
 
 public class QuadraticEquation : IQuadraticEquation
 {

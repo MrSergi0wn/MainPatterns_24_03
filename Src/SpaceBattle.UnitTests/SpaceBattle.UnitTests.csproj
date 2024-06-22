@@ -19,7 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SpaceBattle.Components\SpaceBattle.Components.csproj" />
     <ProjectReference Include="..\SpaceBattle\SpaceBattle.csproj" />
   </ItemGroup>
 

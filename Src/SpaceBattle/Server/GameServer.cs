@@ -1,7 +1,7 @@
 ﻿using System.Collections.Concurrent;
+using SpaceBattle.Actions;
 using SpaceBattle.Commands;
 using SpaceBattle.Commands.Simple;
-using SpaceBattle.Components.Actions;
 using SpaceBattle.Ioc;
 using SpaceBattle.MessageBus;
 
@@ -11,7 +11,7 @@ namespace SpaceBattle.Server
     {
         public Dictionary<int, ConcurrentQueue<ICommand>> Games { get; }
 
-        private readonly IIoc ioc;
+        private readonly IResolvable ioc;
 
         public List<IMovable> CollisionObjects { get; } = new();
 
@@ -21,7 +21,7 @@ namespace SpaceBattle.Server
 
         public bool HardStopped { get; set; }
 
-        public GameServer(IIoc ioc, ConcurrentQueue<ICommand> gameCommands)
+        public GameServer(IResolvable ioc, ConcurrentQueue<ICommand> gameCommands)
         {
             this.Games = new Dictionary<int, ConcurrentQueue<ICommand>> { { 1, gameCommands } };
             this.ioc = ioc;
@@ -42,7 +42,7 @@ namespace SpaceBattle.Server
             }
         }
 
-        public void MessageReceived(GameMessage message)
+        public void ReceiveMessage(GameMessage message)
         {
             new InterpretCommand(message, Games, ioc)
                 .Execute();

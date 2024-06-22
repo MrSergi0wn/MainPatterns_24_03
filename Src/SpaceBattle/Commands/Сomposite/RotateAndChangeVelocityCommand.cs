@@ -1,36 +1,25 @@
-﻿using SpaceBattle.Commands.Simple;
-using SpaceBattle.Components.Calculations;
-using SpaceBattle.Components.Objects;
-using SpaceBattle.ObjectParameters;
+﻿using System.Numerics;
+using SpaceBattle.Actions;
+using SpaceBattle.Commands.Simple;
 
 namespace SpaceBattle.Commands.Сomposite
 {
     public class RotateAndChangeVelocityCommand : ICommand
     {
-        private SpaceObject spaceObject;
+        private IMovable movable;
 
-        private Vector? valueToChangeVelocity;
+        private IRotatable rotateble;
 
-        private List<ICommand>? commands;
+        private Vector2 valueToChangeVelocity;
 
         private MacroCommand? macroCommand;
 
-        public RotateAndChangeVelocityCommand(SpaceObject spaceObject, Vector? valueToChangeVelocity)
+        public RotateAndChangeVelocityCommand(IMovable movable, IRotatable rotatable, Vector2 valueToChangeVelocity)
         {
-            this.spaceObject = spaceObject;
+            this.movable = movable;
+            this.rotateble = rotatable;
             this.valueToChangeVelocity = valueToChangeVelocity;
-            Init();
-        }
-
-        private void Init()
-        {
-            commands = new List<ICommand>()
-            {
-                new RotateCommand(spaceObject, spaceObject.GetComponent<Parameters>().Rotation!),
-                new ChangeVelocityCommand(spaceObject, valueToChangeVelocity)
-            };
-
-            macroCommand = new MacroCommand(commands);
+            this.macroCommand = new MacroCommand(new RotateCommand(this.rotateble), new MoveWithVelocityCommand(this.movable, this.valueToChangeVelocity));
         }
 
         public void Execute()

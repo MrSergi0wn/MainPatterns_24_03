@@ -1,39 +1,45 @@
-﻿using SpaceBattle.Components.Calculations;
-using SpaceBattle.Components.Objects;
-using SpaceBattle.ObjectParameters;
+﻿using SpaceBattle.Actions;
 
 namespace SpaceBattle.Commands.Simple
 {
     public class MoveCommand : ICommand
     {
-        private readonly Parameters specifications;
+        public readonly IMovable movable;
 
-        public readonly SpaceObject spaceObject;
-
-        public readonly Vector velocity;
-
-        public MoveCommand(SpaceObject spaceObject, Vector velocity)
+        public MoveCommand(IMovable movable)
         {
-            this.spaceObject = spaceObject;
-            this.velocity = velocity;
-            specifications = this.spaceObject.GetComponent<Parameters>();
+            this.movable = movable;
         }
 
         public void Execute()
         {
-            try
+            if (this.movable == null)
             {
-                specifications.Position += velocity;
+                throw new Exception("Невозможно сдвинуть объект!");
             }
-            catch
+
+            if (float.IsInfinity(this.movable.Position.X) ||
+                float.IsInfinity(this.movable.Position.Y) ||
+                float.IsNaN(this.movable.Position.X) ||
+                float.IsNaN(this.movable.Position.Y))
             {
-                throw new Exception();
+                throw new Exception("Невозможно получить положение объекта!");
             }
+
+            if (float.IsInfinity(this.movable.Velocity.X) ||
+                float.IsInfinity(this.movable.Velocity.Y) ||
+                float.IsNaN(this.movable.Velocity.X) ||
+                float.IsNaN(this.movable.Velocity.Y))
+            {
+                throw new Exception("Невозможно получить скорость объекта!");
+            }
+
+            this.movable.Position += this.movable.Velocity;
         }
 
         public void Undo()
         {
-            specifications.Position -= velocity;
+            this.movable.Position -= this.movable.Velocity;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using SpaceBattle.Components.Actions;
+﻿using SpaceBattle.Actions;
 
 namespace SpaceBattle.Entities
 {

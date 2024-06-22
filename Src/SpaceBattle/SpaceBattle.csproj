@@ -6,9 +6,4 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\SpaceBattle.CodeGeneration\SpaceBattle.CodeGeneration.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />
-    <ProjectReference Include="..\SpaceBattle.Components\SpaceBattle.Components.csproj" />
-  </ItemGroup>
     </Project>

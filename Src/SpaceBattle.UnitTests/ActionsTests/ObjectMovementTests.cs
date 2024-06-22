@@ -1,66 +1,68 @@
+using System.Numerics;
+using FluentAssertions;
+using Moq;
+using SpaceBattle.Actions;
 using SpaceBattle.Commands.Simple;
-using SpaceBattle.Components.Calculations;
-using SpaceBattle.Components.Objects;
-using SpaceBattle.ObjectParameters;
 
 namespace SpaceBattle.UnitTests.ActionsTests
 {
     public class ObjectMovementTests
     {
         /// <summary>
-        /// Для объекта, находящегося в точке (12, 5) и движущегося со скоростью (-7, 3) движение меняет положение объекта на (5, 8) 
+        /// Р”Р»СЏ РѕР±СЉРµРєС‚Р°, РЅР°С…РѕРґСЏС‰РµРіРѕСЃСЏ РІ С‚РѕС‡РєРµ (12, 5) Рё РґРІРёР¶СѓС‰РµРіРѕСЃСЏ СЃРѕ СЃРєРѕСЂРѕСЃС‚СЊСЋ (-7, 3) РґРІРёР¶РµРЅРёРµ РјРµРЅСЏРµС‚ РїРѕР»РѕР¶РµРЅРёРµ РѕР±СЉРµРєС‚Р° РЅР° (5, 8) 
         /// </summary>
         [Fact]
         public void ObjectChangePositionTest()
         {
-            var starShip = new SpaceObject();
-            starShip.Add(new Parameters());
+            var spaceObject = new Mock<IMovable>();
+            spaceObject.SetupGet(o => o.Position).Returns(new Vector2(12, 5 ));
+            spaceObject.SetupGet(o => o.Velocity).Returns(new Vector2(-7, 3));
 
-            var starShipSpecifications = starShip.GetComponent<Parameters>();
-            starShipSpecifications.Position = new Vector(new double[] { 12, 5 });
+            new MoveCommand(spaceObject.Object).Execute();
 
-            new MoveCommand(starShip, new Vector(new double[] { -7, 3 })).Execute();
-
-            Assert.True(starShipSpecifications.Position.Equals(starShipSpecifications.Position,
-                new Vector(new double[] { 5, 8 })));
+            spaceObject.VerifySet(o => o.Position = new Vector2(5, 8));
         }
 
         /// <summary>
-        /// Попытка сдвинуть объект, у которого невозможно прочитать положение в пространстве, приводит к ошибке
+        /// РџРѕРїС‹С‚РєР° СЃРґРІРёРЅСѓС‚СЊ РѕР±СЉРµРєС‚, Сѓ РєРѕС‚РѕСЂРѕРіРѕ РЅРµРІРѕР·РјРѕР¶РЅРѕ РїСЂРѕС‡РёС‚Р°С‚СЊ РїРѕР»РѕР¶РµРЅРёРµ РІ РїСЂРѕСЃС‚СЂР°РЅСЃС‚РІРµ, РїСЂРёРІРѕРґРёС‚ Рє РѕС€РёР±РєРµ
         /// </summary>
         [Fact]
         public void ImpossibleMoveObjectWhenCantGetGetPositionTest()
         {
-            Assert.Throws<Exception>(() => new MoveCommand(new SpaceObject(), new Vector(new double[] { -7, 3 })).Execute());
+            var objectToMove = new Mock<IMovable>();
+            objectToMove.SetupGet(o => o.Position).Returns(new Vector2(float.NaN, 0));
+
+            var action = () => new MoveCommand(objectToMove.Object).Execute();
+
+            action.Should().Throw<Exception>().WithMessage("РќРµРІРѕР·РјРѕР¶РЅРѕ РїРѕР»СѓС‡РёС‚СЊ РїРѕР»РѕР¶РµРЅРёРµ РѕР±СЉРµРєС‚Р°!");
         }
 
         /// <summary>
-        /// Попытка сдвинуть объект, у которого невозможно прочитать значение мгновенной скорости, приводит к ошибке
+        /// РџРѕРїС‹С‚РєР° СЃРґРІРёРЅСѓС‚СЊ РѕР±СЉРµРєС‚, Сѓ РєРѕС‚РѕСЂРѕРіРѕ РЅРµРІРѕР·РјРѕР¶РЅРѕ РїСЂРѕС‡РёС‚Р°С‚СЊ Р·РЅР°С‡РµРЅРёРµ РјРіРЅРѕРІРµРЅРЅРѕР№ СЃРєРѕСЂРѕСЃС‚Рё, РїСЂРёРІРѕРґРёС‚ Рє РѕС€РёР±РєРµ
         /// </summary>
         [Fact]
         public void ImpossibleToMoveObjectWhenCantGetVelocityTest()
         {
-            var starShip = new SpaceObject();
-            starShip.Add(new Parameters());
+            var objectToMove = new Mock<IMovable>();
+            objectToMove.SetupGet(o => o.Velocity).Returns(new Vector2(float.NaN, 0));
+            var mover = new MoveCommand(objectToMove.Object);
 
-            var starShipSpecifications = starShip.GetComponent<Parameters>();
-            starShipSpecifications.Position = new Vector(new double[] { 1, 5 });
+            var action = () => new MoveCommand(objectToMove.Object).Execute();
 
-            Assert.Throws<Exception>(() => new MoveCommand(starShip, new Vector(double.NaN, double.NaN)).Execute());
+            action.Should().Throw<Exception>().WithMessage("РќРµРІРѕР·РјРѕР¶РЅРѕ РїРѕР»СѓС‡РёС‚СЊ СЃРєРѕСЂРѕСЃС‚СЊ РѕР±СЉРµРєС‚Р°!");
         }
 
         /// <summary>
-        /// Попытка сдвинуть объект, у которого невозможно изменить положение в пространстве, приводит к ошибке
+        /// РџРѕРїС‹С‚РєР° СЃРґРІРёРЅСѓС‚СЊ РѕР±СЉРµРєС‚, Сѓ РєРѕС‚РѕСЂРѕРіРѕ РЅРµРІРѕР·РјРѕР¶РЅРѕ РёР·РјРµРЅРёС‚СЊ РїРѕР»РѕР¶РµРЅРёРµ РІ РїСЂРѕСЃС‚СЂР°РЅСЃС‚РІРµ, РїСЂРёРІРѕРґРёС‚ Рє РѕС€РёР±РєРµ
         /// </summary>
         [Fact]
         public void ObjectWithNanValuesTest()
         {
-            var starShip = new SpaceObject();
-            starShip.Add(new Parameters());
+            IMovable? objectToMove = null;
 
-            var starShipSpecifications = starShip.GetComponent<Parameters>();
+            var action = () => new MoveCommand(objectToMove!).Execute();
 
-            Assert.Throws<Exception>(() => starShipSpecifications.Position = new Vector(new double[] { double.NaN, 5 }));
+            action.Should().Throw<Exception>().WithMessage("РќРµРІРѕР·РјРѕР¶РЅРѕ СЃРґРІРёРЅСѓС‚СЊ РѕР±СЉРµРєС‚!");
         }
     }
 }

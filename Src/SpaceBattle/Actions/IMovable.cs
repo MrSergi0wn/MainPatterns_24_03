@@ -1,7 +1,6 @@
-﻿using SpaceBattle.Components.Calculations;
-using System.Numerics;
+﻿using System.Numerics;
 
-namespace SpaceBattle.Components.Actions
+namespace SpaceBattle.Actions
 {
     public interface IMovable
     {

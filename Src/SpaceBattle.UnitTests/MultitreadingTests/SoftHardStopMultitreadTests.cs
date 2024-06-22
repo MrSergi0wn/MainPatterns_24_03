@@ -10,7 +10,7 @@ namespace SpaceBattle.UnitTests.MultitreadingTests
 {
     public class SoftHardStopMultitreadTests
     {
-        protected Mock<IIoc> Ioc = new();
+        protected Mock<IoContainer> Ioc = new();
 
         [Fact]
         public void ExecuteMultitreadTest()

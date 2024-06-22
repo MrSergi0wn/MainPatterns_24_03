@@ -1,4 +1,4 @@
-﻿namespace MainPatterns.QuadraticEquation.UnitTests
+namespace MainPatterns.QuadraticEquation.UnitTests
 {
     public class QuadraticEquationUnitTests
     {

@@ -1,5 +1,6 @@
-﻿using SpaceBattle.Commands.Simple;
-using SpaceBattle.Components.Objects;
+﻿using Moq;
+using SpaceBattle.Actions;
+using SpaceBattle.Commands.Simple;
 
 namespace SpaceBattle.UnitTests.CommandsTests
 {
@@ -8,24 +9,13 @@ namespace SpaceBattle.UnitTests.CommandsTests
         [Fact]
         public void BurnFuelCommandTest()
         {
-            var fuel = new Fuel(10, 2);
+            var objectForFuelBurn = new Mock<IBurningFuel>();
+            objectForFuelBurn.SetupGet(o => o.Volume).Returns(100);
+            objectForFuelBurn.SetupGet(o => o.Consumption).Returns(5);
 
-            var burnFuelCommand = new BurnFuelCommand(fuel);
+            new BurnFuelCommand(objectForFuelBurn.Object).Execute();
 
-            Assert.True(fuel.FuelVolume == 10);
-
-            burnFuelCommand.Execute();
-            Assert.True(fuel.FuelVolume == 8);
-
-            fuel.Add(1);
-            Assert.True(fuel.FuelVolume == 9);
-
-            fuel.Add(100);
-            Assert.True(fuel.FuelVolume == 10);
-
-            fuel = new Fuel(10, 100);
-            new BurnFuelCommand(fuel).Execute();
-            Assert.True(fuel.FuelVolume == 0);
+            objectForFuelBurn.VerifySet(o => o.Volume = 95);
         }
     }
 }

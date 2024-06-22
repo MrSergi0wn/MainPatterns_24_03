@@ -2,8 +2,6 @@
 using System.Reflection;
 using System.Text;
 using Microsoft.CodeAnalysis;
-using SpaceBattle.Components.Actions;
-using SpaceBattle.Components.Objects;
 using SpaceBattle.FileSystemService;
 
 //#pragma warning disable RS1035
@@ -24,12 +22,12 @@ namespace SpaceBattle.CodeGeneration
             var mainMethod = context.Compilation.GetEntryPoint(context.CancellationToken);
 
             // Build up the source code
-            var source = GenerateClass(typeof(IMovable));
+            //var source = GenerateClass(typeof(IMovable));
 
             var typeName = mainMethod!.ContainingType.Name;
 
             // Add the source code to the compilation
-            context.AddSource($"{typeName}.g.cs", source);
+            //context.AddSource($"{typeName}.g.cs", source);
         }
 
         //private IMovable Generate(Type type)
@@ -55,8 +53,8 @@ namespace SpaceBattle.CodeGeneration
             builder.AppendLine("using MainPatterns.SpaceBattle.Calculations;");
             builder.AppendLine($"public class {type.Name}Adapter : {type}");
             builder.AppendLine("{");
-            builder.AppendLine($"{typeof(SpaceObject)} obj;");
-            builder.AppendLine($"public {type.Name}Adapter({typeof(SpaceObject)} obj) {{ this.obj = obj; }} ");
+            //builder.AppendLine($"{typeof(SpaceObject)} obj;");
+            //builder.AppendLine($"public {type.Name}Adapter({typeof(SpaceObject)} obj) {{ this.obj = obj; }} ");
 
             GenerateCtor(type, builder);
 

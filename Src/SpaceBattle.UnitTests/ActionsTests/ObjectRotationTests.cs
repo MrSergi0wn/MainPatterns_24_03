@@ -1,7 +1,7 @@
-﻿using SpaceBattle.Commands.Simple;
-using SpaceBattle.Components.Calculations;
-using SpaceBattle.Components.Objects;
-using SpaceBattle.ObjectParameters;
+using System.Numerics;
+using Moq;
+using SpaceBattle.Actions;
+using SpaceBattle.Commands.Simple;
 
 namespace SpaceBattle.UnitTests.ActionsTests
 {
@@ -13,16 +13,14 @@ namespace SpaceBattle.UnitTests.ActionsTests
         [Fact]
         public void ObjectChangeRotationTest()
         {
-            var starShip = new SpaceObject();
-            starShip.Add(new Parameters());
+            var objectToRotate = new Mock<IRotatable>();
+            objectToRotate.SetupGet(o => o.Direction).Returns(0);
+            objectToRotate.SetupGet(o => o.AngularVelocity).Returns(10);
+            objectToRotate.SetupGet(o => o.Direction).Returns(5);
 
-            var starShipSpecifications = starShip.GetComponent<Parameters>();
-            starShipSpecifications.Rotation = new Vector(new double[] { 12, 5 });
+            new RotateCommand(objectToRotate.Object).Execute();
 
-            new RotateCommand(starShip, new Vector(new double[] { 5, 8 })).Execute();
-
-            Assert.True(starShipSpecifications.Rotation.Equals(starShipSpecifications.Rotation,
-                new Vector(new double[] { 17, 13 })));
+            objectToRotate.VerifySet(o => o.Direction = 5);
         }
 
         /// <summary>
@@ -31,7 +29,7 @@ namespace SpaceBattle.UnitTests.ActionsTests
         [Fact]
         public void ImpossibleRotateObjectWhenCantGetRotationTest()
         {
-            Assert.Throws<Exception>(() => new RotateCommand(new SpaceObject(), new Vector(new double[] { -7, 3 })).Execute());
+            Assert.Throws<Exception>(() => new RotateCommand(null!).Execute());
         }
 
         /// <summary>
@@ -40,12 +38,12 @@ namespace SpaceBattle.UnitTests.ActionsTests
         [Fact]
         public void ObjectWithNanValuesTest()
         {
-            var starShip = new SpaceObject();
-            starShip.Add(new Parameters());
+            var objectToRotate = new Mock<IRotatable>();
+            objectToRotate.SetupGet(o => o.Direction).Returns(0);
+            objectToRotate.SetupGet(o => o.AngularVelocity).Returns(0);
+            objectToRotate.SetupGet(o => o.Direction).Returns(0);
 
-            var starShipSpecifications = starShip.GetComponent<Parameters>();
-
-            Assert.Throws<Exception>(() => starShipSpecifications.Rotation = new Vector(new double[] { double.NaN, 5 }));
+            Assert.Throws<Exception>(() => new RotateCommand(objectToRotate.Object).Execute());
         }
     }
 }
