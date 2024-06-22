@@ -1,8 +1,7 @@
-﻿using SpaceBattle.Components.Actions;
-using System.Collections.Concurrent;
-using SpaceBattle.Ioc;
+﻿using System.Collections.Concurrent;
+using System.Numerics;
+using SpaceBattle.Actions;
 using SpaceBattle.MessageBus;
-using Vector = SpaceBattle.Components.Calculations.Vector;
 
 namespace SpaceBattle.Commands.Simple
 {
@@ -12,9 +11,9 @@ namespace SpaceBattle.Commands.Simple
 
         private readonly Dictionary<int, ConcurrentQueue<ICommand>> games;
 
-        private readonly IIoc ioc;
+        private readonly IResolvable ioc;
 
-        public InterpretCommand(GameMessage message, Dictionary<int, ConcurrentQueue<ICommand>> games, IIoc ioc)
+        public InterpretCommand(GameMessage message, Dictionary<int, ConcurrentQueue<ICommand>> games, IResolvable ioc)
         {
             this.message = message;
             this.games = games;
@@ -25,11 +24,11 @@ namespace SpaceBattle.Commands.Simple
         {
             var gameQueue = games[message.GameId];
 
-            var gameObject = ioc.Resolve<IMovable>(message.GameObjectId);
+            var gameObject = ioc.Resolve<IMovable>(message.GameObjectId!);
 
             var velocity = float.Parse(message.ArgsJson!);
 
-            var command = ioc.Resolve<ICommand>(message.GameOperationId, gameObject, new Vector(new double[]{velocity}));
+            var command = ioc.Resolve<ICommand>(message.GameOperationId!, gameObject, new Vector2(velocity));
 
             gameQueue.Enqueue(command);
         }

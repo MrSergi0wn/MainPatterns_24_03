@@ -19,8 +19,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaceBattle.UnitTests", "Sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaceBattle.FileSystemService", "Src\SpaceBattle.FileSystemService\SpaceBattle.FileSystemService.csproj", "{C49BE811-32D2-42FF-B798-AD628D4809A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceBattle.Components", "Src\SpaceBattle.Components\SpaceBattle.Components.csproj", "{6271FA39-CC05-449B-9933-1F65831C9E06}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,10 +49,6 @@ Global
 		{C49BE811-32D2-42FF-B798-AD628D4809A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C49BE811-32D2-42FF-B798-AD628D4809A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C49BE811-32D2-42FF-B798-AD628D4809A3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6271FA39-CC05-449B-9933-1F65831C9E06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6271FA39-CC05-449B-9933-1F65831C9E06}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6271FA39-CC05-449B-9933-1F65831C9E06}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6271FA39-CC05-449B-9933-1F65831C9E06}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,7 +60,6 @@ Global
 		{B7B32018-65F7-4A65-BA0C-27EF50E79E99} = {F26C75A4-E25D-491F-ACE5-D0D5A6CADD91}
 		{10A8C74D-AAB9-4D88-9742-67E490DC5446} = {F26C75A4-E25D-491F-ACE5-D0D5A6CADD91}
 		{C49BE811-32D2-42FF-B798-AD628D4809A3} = {F26C75A4-E25D-491F-ACE5-D0D5A6CADD91}
-		{6271FA39-CC05-449B-9933-1F65831C9E06} = {F26C75A4-E25D-491F-ACE5-D0D5A6CADD91}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EAF59454-EA82-48BB-A24C-849495E6614C}

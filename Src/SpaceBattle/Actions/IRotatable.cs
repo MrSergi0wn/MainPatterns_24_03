@@ -1,7 +1,4 @@
-﻿using System.Numerics;
-using SpaceBattle.Components.Calculations;
-
-namespace SpaceBattle.Components.Actions
+﻿namespace SpaceBattle.Actions
 {
     public interface IRotatable
     {

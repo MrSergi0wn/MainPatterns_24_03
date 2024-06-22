@@ -1,24 +1,25 @@
-﻿using SpaceBattle.Components.Objects;
+﻿
+using SpaceBattle.Actions;
 
 namespace SpaceBattle.Commands.Simple
 {
     public class BurnFuelCommand : ICommand
     {
-        public readonly Fuel Fuel;
+        public readonly IBurningFuel burningFuel;
 
-        public BurnFuelCommand(Fuel fuel)
+        public BurnFuelCommand(IBurningFuel burningFuel)
         {
-            Fuel = fuel;
+            this.burningFuel = burningFuel;
         }
 
         public void Execute()
         {
-            Fuel.Burn();
+            this.burningFuel.Volume -= this.burningFuel.Consumption;
         }
 
         public void Undo()
         {
-            Fuel.Add(Fuel.Consumption);
+            this.burningFuel.Volume += this.burningFuel.Consumption;
         }
     }
 }

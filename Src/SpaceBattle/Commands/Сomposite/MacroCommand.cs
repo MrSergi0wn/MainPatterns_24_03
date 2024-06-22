@@ -4,11 +4,11 @@ namespace SpaceBattle.Commands.Сomposite
 {
     public class MacroCommand : ICommand
     {
-        private readonly List<ICommand> commands;
+        private readonly ICommand[] commands;
 
         private List<ICommand> executedCommands;
 
-        public MacroCommand(List<ICommand> commands)
+        public MacroCommand(params ICommand[] commands)
         {
             this.commands = commands;
             executedCommands = new List<ICommand>();

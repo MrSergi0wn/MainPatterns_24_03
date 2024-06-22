@@ -1,20 +1,20 @@
-﻿using SpaceBattle.Components.Objects;
+﻿using SpaceBattle.Actions;
 using SpaceBattle.Exceptions;
 
 namespace SpaceBattle.Commands.Simple
 {
     public class CheckFuelCommand : ICommand
     {
-        public readonly Fuel Fuel;
+        public readonly IBurningFuel burningFuel;
 
-        public CheckFuelCommand(Fuel fuel)
+        public CheckFuelCommand(IBurningFuel burningFuel)
         {
-            Fuel = fuel;
+            this.burningFuel = burningFuel;
         }
 
         public void Execute()
         {
-            if (Fuel.FuelVolume < Fuel.Consumption) throw new CommandException(this);
+            if (this.burningFuel.Volume < this.burningFuel.Consumption) throw new CommandException(this);
         }
 
         public void Undo() { }

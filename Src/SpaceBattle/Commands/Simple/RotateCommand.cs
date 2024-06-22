@@ -1,29 +1,21 @@
-﻿using SpaceBattle.Components.Calculations;
-using SpaceBattle.Components.Objects;
-using SpaceBattle.ObjectParameters;
+﻿using SpaceBattle.Actions;
 
 namespace SpaceBattle.Commands.Simple
 {
     public class RotateCommand : ICommand
     {
-        private readonly Parameters specifications;
+        private readonly IRotatable rotatable;
 
-        public readonly SpaceObject spaceObject;
-
-        public readonly Vector rotationAngle;
-
-        public RotateCommand(SpaceObject spaceObject, Vector rotationAngle)
+        public RotateCommand(IRotatable rotatable)
         {
-            this.spaceObject = spaceObject;
-            this.rotationAngle = rotationAngle;
-            specifications = this.spaceObject.GetComponent<Parameters>();
+            this.rotatable = rotatable;
         }
 
         public void Execute()
         {
             try
             {
-                specifications.Rotation += rotationAngle;
+                this.rotatable.Direction += this.rotatable.AngularVelocity % this.rotatable.Direction;
             }
             catch
             {
@@ -33,7 +25,7 @@ namespace SpaceBattle.Commands.Simple
 
         public void Undo()
         {
-            specifications.Rotation -= rotationAngle;
+            this.rotatable.Direction -= this.rotatable.AngularVelocity % this.rotatable.Direction;
         }
     }
 }

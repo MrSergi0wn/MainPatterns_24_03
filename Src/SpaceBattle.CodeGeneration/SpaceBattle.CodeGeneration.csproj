@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SpaceBattle.Components\SpaceBattle.Components.csproj" />
     <ProjectReference Include="..\SpaceBattle.FileSystemService\SpaceBattle.FileSystemService.csproj" />
   </ItemGroup>
 
