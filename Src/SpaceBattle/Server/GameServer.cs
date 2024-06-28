@@ -44,8 +44,12 @@ namespace SpaceBattle.Server
 
         public void ReceiveMessage(GameMessage message)
         {
-            new InterpretCommand(message, Games, ioc)
-                .Execute();
+            new InterpretCommand(message, Games, this.ioc).Execute();
+        }
+
+        public void AuthenticReceiveMessage(GameMessage message)
+        {
+            new InterpretAuthenticatedCommand(message, Games, this.ioc).Execute();
         }
     }
 }
