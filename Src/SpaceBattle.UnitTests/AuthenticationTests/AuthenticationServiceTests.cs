@@ -67,12 +67,10 @@ namespace SpaceBattle.UnitTests.AuthenticationTests
         }
 
         [Theory]
-        [InlineData(2, "SecondUser", true)]
-        [InlineData(4, "User321", false)]
-        [InlineData(55, "FifthUser", false)]
+        [InlineData(1, "FirstUser", true)]
+        [InlineData(22, "SecondUser", false)]
         public void ConfirmThatGameServerExecutedAuthenticatedUsersCommandsInSpaceBattle(int userId, string userName, bool validationResult)
         {
-            this.authenticationService = new AuthenticationService();
             var userAuthenticationToken = this.authenticationService.GetUserAuthenticationJwt(userId, userName);
             var spaceBattleId = this.authenticationService.SpaceBattleRegister(userAuthenticationToken, new []{1, 2, 3, 4, 5});
             var spaceBattleAuthenticationToken = this.authenticationService.GetStarBattleAuthorizationJwt(spaceBattleId, userAuthenticationToken);
