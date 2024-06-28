@@ -1,9 +1,9 @@
 ﻿using System.Collections.Concurrent;
 using FluentAssertions;
-using Moq;
 using SpaceBattle.Actions;
 using SpaceBattle.Authentication;
 using System.Numerics;
+using Moq;
 using SpaceBattle.Commands;
 using SpaceBattle.Commands.Simple;
 using SpaceBattle.Ioc;
@@ -29,6 +29,8 @@ namespace SpaceBattle.UnitTests.AuthenticationTests
         [InlineData(55, "FifthUser", false)]
         public void ValidateAuthenticationUserJwtTest(int userId, string userName, bool validationResult)
         {
+            this.authenticationService = new AuthenticationService();
+
             var userAuthenticationJwt = this.authenticationService.GetUserAuthenticationJwt(userId, userName);
 
             this.authenticationService.ValidateToken(userAuthenticationJwt).Should().Be(validationResult);
@@ -42,6 +44,8 @@ namespace SpaceBattle.UnitTests.AuthenticationTests
         [InlineData(55, "FifthUser", false)]
         public void CreateNewSpaceBattleGameForAuthenticatedUsersTest(int userId, string userName, bool validationResult)
         {
+            this.authenticationService = new AuthenticationService();
+
             var spaceBattleId = this.authenticationService.SpaceBattleRegister(
                 this.authenticationService.GetUserAuthenticationJwt(userId, userName), new[] { 1, 3, 5 });
 
@@ -56,9 +60,13 @@ namespace SpaceBattle.UnitTests.AuthenticationTests
         [InlineData(55, "FifthUser", false)]
         public void ValidateAuthenticationSpaceBattleGameJwtTest(int userId, string userName, bool validationResult)
         {
-            var userAuthenticationToken = this.authenticationService.GetUserAuthenticationJwt(userId, userName);
+            this.authenticationService = new AuthenticationService();
+
+            var userAuthenticationToken = this.authenticationService.GetUserAuthenticationJwt(1, "FirstUser");
 
             var spaceBattleId = this.authenticationService.SpaceBattleRegister(userAuthenticationToken, new[] { 1, 3, 5 });
+
+            userAuthenticationToken = this.authenticationService.GetUserAuthenticationJwt(userId, userName);
 
             var spaceBattleAuthenticationJwt =
                 this.authenticationService.GetStarBattleAuthorizationJwt(spaceBattleId, userAuthenticationToken);
@@ -71,13 +79,15 @@ namespace SpaceBattle.UnitTests.AuthenticationTests
         [InlineData(10, "SecondUser", false)]
         public void ConfirmThatGameServerExecutedAuthenticatedUsersCommandsInSpaceBattle(int userId, string userName, bool validationResult)
         {
-            var userAuthenticationToken = this.authenticationService.GetUserAuthenticationJwt(userId, userName);
+            this.authenticationService = new AuthenticationService();
+            var userAuthenticationToken = this.authenticationService.GetUserAuthenticationJwt(1, "FirstUser");
             var spaceBattleId = this.authenticationService.SpaceBattleRegister(userAuthenticationToken, new []{1, 2, 3, 4, 5});
+            userAuthenticationToken = this.authenticationService.GetUserAuthenticationJwt(userId, userName);
             var spaceBattleAuthenticationToken = this.authenticationService.GetStarBattleAuthorizationJwt(spaceBattleId, userAuthenticationToken);
 
             var movableObject = new Mock<IMovable>();
-            movableObject.SetupGet(o => o.Position).Returns(new Vector2(10, 3));
-            movableObject.SetupGet(o => o.Velocity).Returns(new Vector2(-7, 2));
+            movableObject.SetupGet(mo => mo.Position).Returns(new Vector2(10, 3));
+            movableObject.SetupGet(mo => mo.Velocity).Returns(new Vector2(-7, 2));
 
             var ioc = new IoContainer();
             ioc.Resolve<ICommand>("IoC.Register",
