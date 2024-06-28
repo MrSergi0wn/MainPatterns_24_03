@@ -68,7 +68,7 @@ namespace SpaceBattle.UnitTests.AuthenticationTests
 
         [Theory]
         [InlineData(1, "FirstUser", true)]
-        [InlineData(22, "SecondUser", false)]
+        [InlineData(10, "SecondUser", false)]
         public void ConfirmThatGameServerExecutedAuthenticatedUsersCommandsInSpaceBattle(int userId, string userName, bool validationResult)
         {
             var userAuthenticationToken = this.authenticationService.GetUserAuthenticationJwt(userId, userName);
