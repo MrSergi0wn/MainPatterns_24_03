@@ -116,5 +116,6 @@ namespace SpaceBattle.UnitTests.AuthenticationTests
 
             movableObject.VerifySet(mo => mo.Position = new Vector2(3, 5), validationResult ? Times.Once : Times.Never);
         }
+
     }
 }
