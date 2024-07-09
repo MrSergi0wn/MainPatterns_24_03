@@ -15,7 +15,7 @@ namespace SpaceBattle.Server
 
         public List<IMovable> CollisionObjects { get; } = new();
 
-        public CurrentConditionOfServer serverCondition { get; set; }
+        public CurrentServerCondition ServerCondition { get; set; }
 
         public bool SoftStopped { get; set; }
 
@@ -25,7 +25,7 @@ namespace SpaceBattle.Server
         {
             this.Games = new Dictionary<int, ConcurrentQueue<ICommand>> { { 1, gameCommands } };
             this.ioc = ioc;
-            this.serverCondition = new InitialServerCondition(this);
+            this.ServerCondition = new InitialServerCondition(this);
         }
 
         public void RunMultithreadCommands()
@@ -36,7 +36,7 @@ namespace SpaceBattle.Server
                 {
                     while (!HardStopped || (!SoftStopped && !game.Value.Any()))
                     {
-                        serverCondition.Handle(game);
+                        ServerCondition.Handle(game);
                     }
                 });
             }

@@ -3,11 +3,11 @@ using SpaceBattle.Commands;
 
 namespace SpaceBattle.Server
 {
-    public abstract class CurrentConditionOfServer
+    public abstract class CurrentServerCondition
     {
         protected readonly GameServer gameServer;
 
-        protected CurrentConditionOfServer(GameServer gameServer)
+        protected CurrentServerCondition(GameServer gameServer)
         {
             this.gameServer = gameServer;
         }
