@@ -18,6 +18,7 @@ namespace SpaceBattle.UnitTests.MessageBusTests
         {
             var spaceObject = new Mock<IMovable>();
             spaceObject.SetupGet(o => o.Position).Returns(new Vector2(5, 2));
+            spaceObject.SetupGet(o => o.Velocity).Returns(new Vector2(2, 2));
 
             var ioc = new IoContainer();
             ioc.Resolve<ICommand>("IoC.Register",
@@ -41,7 +42,7 @@ namespace SpaceBattle.UnitTests.MessageBusTests
             };
 
             server.ReceiveMessage(message);
-
+            
             spaceObject.VerifySet(o => o.Position = new Vector2(7, 4));
         }
     }
