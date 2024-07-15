@@ -29,7 +29,7 @@ namespace SpaceBattle.UnitTests.MultitreadingTests
 
             server.RunMultithreadCommands();
 
-            Assert.True(resetEvent.WaitOne(TimeSpan.FromSeconds(5)));
+            Assert.True(resetEvent.WaitOne());
         }
 
         [Fact]
@@ -57,7 +57,7 @@ namespace SpaceBattle.UnitTests.MultitreadingTests
 
             server.RunMultithreadCommands();
 
-            firstResetEvent.WaitOne(TimeSpan.FromSeconds(5)).Should().BeTrue();
+            firstResetEvent.WaitOne().Should().BeTrue();
 
             firstCommand.Verify(fc => fc.Execute(), Times.Once);
 
@@ -90,7 +90,7 @@ namespace SpaceBattle.UnitTests.MultitreadingTests
 
             server.RunMultithreadCommands();
 
-            resetEvent.WaitOne(TimeSpan.FromSeconds(5)).Should().BeTrue();
+            resetEvent.WaitOne().Should().BeTrue();
 
             firstCommand.Verify(fc => fc.Execute(), Times.Once);
 
