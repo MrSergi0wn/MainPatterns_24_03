@@ -1,8 +1,9 @@
-﻿using SpaceBattle.Actions;
+﻿using System.Numerics;
+using SpaceBattle.Actions;
 
 namespace SpaceBattle.Objects
 {
-    public class SpaceObject : IObject
+    public class SpaceObject : IObject, IMovable
     {
         private List<IObject> Objects { get; }
 
@@ -20,5 +21,8 @@ namespace SpaceBattle.Objects
         {
             return (T)Objects.FirstOrDefault(obj => obj.GetType() == typeof(T))!;
         }
+
+        public Vector2 Position { get; set; }
+        public Vector2 Velocity { get; set; }
     }
 }
