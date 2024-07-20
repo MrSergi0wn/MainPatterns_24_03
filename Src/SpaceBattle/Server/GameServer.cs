@@ -2,7 +2,6 @@
 using SpaceBattle.Actions;
 using SpaceBattle.Commands;
 using SpaceBattle.Commands.Simple;
-using SpaceBattle.Ioc;
 using SpaceBattle.MessageBus;
 
 namespace SpaceBattle.Server

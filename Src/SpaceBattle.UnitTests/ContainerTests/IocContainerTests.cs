@@ -4,7 +4,6 @@ using SpaceBattle.Actions;
 using SpaceBattle.Commands;
 using SpaceBattle.Commands.Simple;
 using SpaceBattle.Commands.Сomposite;
-using SpaceBattle.Ioc;
 
 namespace SpaceBattle.UnitTests.ContainerTests
 {
@@ -13,7 +12,7 @@ namespace SpaceBattle.UnitTests.ContainerTests
         [Fact]
         public void RegisterAndSolveMoveCommandTest()
         {
-            var ioc = new IoContainer();
+            var ioc = new IocContainer.IocC();
             var movableObject = new Mock<IMovable>();
             var movableAndFuelBurnableObject = movableObject.As<IBurningFuel>();
 
@@ -32,7 +31,7 @@ namespace SpaceBattle.UnitTests.ContainerTests
         [Fact]
         public void RegisterScopeTest()
         {
-            var ioc = new IoContainer();
+            var ioc = new IocContainer.IocC();
 
             ioc.Scopes.Count.Should().Be(0);
 
@@ -46,7 +45,7 @@ namespace SpaceBattle.UnitTests.ContainerTests
         [Fact]
         public void CurrentScopeTest()
         {
-            var ioc = new IoContainer();
+            var ioc = new IocContainer.IocC();
 
             ioc.CurrentScope.Value?.Name.Should().Be("DefaultScope");
 
@@ -62,7 +61,7 @@ namespace SpaceBattle.UnitTests.ContainerTests
         [Fact]
         public void ErrorThrowsWhenTryingSetNotRegisteredScope()
         {
-            var ioc = new IoContainer();
+            var ioc = new IocContainer.IocC();
 
             var action = () => ioc.Resolve<ICommand>("Scopes.Current", "testScope")
                 .Execute();

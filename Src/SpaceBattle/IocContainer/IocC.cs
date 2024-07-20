@@ -5,9 +5,9 @@ using SpaceBattle.Actions;
 using SpaceBattle.Adapter;
 using SpaceBattle.Commands.Simple;
 
-namespace SpaceBattle.Ioc
+namespace SpaceBattle.IocContainer
 {
-    public class IoContainer : IResolvable
+    public class IocC : IResolvable
     {
         public ConcurrentDictionary<string, Scope> Scopes { get; } = new();
         public ThreadLocal<Scope> CurrentScope { get; } = new() { Value = new Scope("DefaultScope") };
