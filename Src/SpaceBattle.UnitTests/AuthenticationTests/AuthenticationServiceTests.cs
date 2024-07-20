@@ -5,6 +5,7 @@ using SpaceBattle.Actions;
 using SpaceBattle.Authentication;
 using System.Numerics;
 using Moq;
+using NUnit.Framework;
 using SpaceBattle.Commands;
 using SpaceBattle.Commands.Simple;
 using SpaceBattle.MessageBus;
@@ -13,7 +14,7 @@ using SpaceBattle.Server;
 
 namespace SpaceBattle.UnitTests.AuthenticationTests
 {
-    public class AuthenticationServiceTests
+    public class AuthenticationServiceTests : TestSetup
     {
         private IAuthenticationService authenticationService;
 
@@ -22,7 +23,7 @@ namespace SpaceBattle.UnitTests.AuthenticationTests
             this.authenticationService = new AuthenticationService();
         }
 
-        [Theory]
+        [Xunit.Theory]
         [InlineData(1, "FirstUser", true)]
         [InlineData(1, "SecondUser", false)]
         [InlineData(3, "ThirdUser", true)]
@@ -37,7 +38,7 @@ namespace SpaceBattle.UnitTests.AuthenticationTests
             this.authenticationService.ValidateToken(userAuthenticationJwt).Should().Be(validationResult);
         }
 
-        [Theory]
+        [Xunit.Theory]
         [InlineData(1, "FirstUser", true)]
         [InlineData(1, "SecondUser", false)]
         [InlineData(3, "ThirdUser", true)]
@@ -53,7 +54,7 @@ namespace SpaceBattle.UnitTests.AuthenticationTests
             (spaceBattleId != 0).Should().Be(validationResult);
         }
 
-        [Theory]
+        [Xunit.Theory]
         [InlineData(1, "FirstUser", true)]
         [InlineData(1, "SecondUser", false)]
         [InlineData(3, "ThirdUser", true)]
@@ -75,7 +76,7 @@ namespace SpaceBattle.UnitTests.AuthenticationTests
             this.authenticationService.ValidateToken(spaceBattleAuthenticationJwt).Should().Be(validationResult);
         }
 
-        [Fact]
+        [Test]
         public void ConfirmThatGameServerExecutedAuthenticatedUserCommandsInSpaceBattle()
         {
             this.authenticationService = new AuthenticationService();

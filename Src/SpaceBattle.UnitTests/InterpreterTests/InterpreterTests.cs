@@ -12,7 +12,7 @@ using SpaceBattle.Server;
 
 namespace SpaceBattle.UnitTests.InterpreterTests
 {
-    public class InterpreterTests : TestBase
+    public class InterpreterTests : TestSetup
     {
         /// <summary>
         /// Test for demonstration that after interpreted order, command executed for movable object in scope for gameObjectId = 548

@@ -11,7 +11,7 @@ using SpaceBattle.Server;
 
 namespace SpaceBattle.UnitTests.MessageBusTests
 {
-    public class MessageBusTests : TestBase
+    public class MessageBusTests : TestSetup
     {
         [Test]
         public void GameObjectMovesAfterServerReceivedMessageTest()
