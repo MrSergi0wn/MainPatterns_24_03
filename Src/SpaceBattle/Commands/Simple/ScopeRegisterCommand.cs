@@ -1,6 +1,6 @@
 ﻿using System.Collections.Concurrent;
 using SpaceBattle.Commands;
-using SpaceBattle.Ioc;
+using SpaceBattle.IocContainer;
 
 namespace SpaceBattle.Commands.Simple
 {

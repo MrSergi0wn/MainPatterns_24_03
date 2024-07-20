@@ -1,15 +1,15 @@
 ﻿using System.Collections.Concurrent;
-using SpaceBattle.Ioc;
+using SpaceBattle.IocContainer;
 
 namespace SpaceBattle.Commands.Simple
 {
     public class ScopeCurrentSetCommand : ICommand
     {
-        private readonly IoContainer ioC;
+        private readonly IocC ioC;
         private readonly ConcurrentDictionary<string, Scope> scopes;
         private readonly string scopeIdToSet;
 
-        public ScopeCurrentSetCommand(IoContainer ioC, ConcurrentDictionary<string, Scope> scopes, string scopeIdToSet)
+        public ScopeCurrentSetCommand(IocC ioC, ConcurrentDictionary<string, Scope> scopes, string scopeIdToSet)
         {
             this.ioC = ioC;
             this.scopes = scopes;

@@ -3,14 +3,13 @@ using FluentAssertions;
 using Moq;
 using SpaceBattle.Commands;
 using SpaceBattle.Commands.Simple;
-using SpaceBattle.Ioc;
 using SpaceBattle.Server;
 
 namespace SpaceBattle.UnitTests.MultitreadingTests
 {
     public class SoftHardStopMultitreadTests
     {
-        protected Mock<IoContainer> Ioc = new();
+        protected Mock<IocContainer.IocC> Ioc = new();
 
         [Fact]
         public void ExecuteMultitreadTest()

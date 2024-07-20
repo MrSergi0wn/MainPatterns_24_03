@@ -1,4 +1,4 @@
-﻿namespace SpaceBattle.Ioc
+﻿namespace SpaceBattle.IocContainer
 {
     public class Scope
     {
